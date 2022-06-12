@@ -1,14 +1,10 @@
 package com.phoenix.quartzscheduler.service.base;
 
-import com.phoenix.quartzscheduler.domain.ScheduleInfo;
-import com.phoenix.quartzscheduler.scheduler.JobData;
-import java.util.List;
+import com.phoenix.quartzscheduler.service.model.EmailRequest;
+import com.phoenix.quartzscheduler.service.model.EmailResponse;
+import org.springframework.http.ResponseEntity;
 
 public interface ScheduleInfoService {
 
-  void schedule(JobData data);
-
-  void deleteJob(String jobName, String jobGroup);
-
-  List<ScheduleInfo> findAllJob();
+  ResponseEntity<EmailResponse> scheduleEmail(EmailRequest request);
 }

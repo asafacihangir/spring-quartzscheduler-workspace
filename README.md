@@ -1,17 +1,16 @@
-# Spring Boot - Quartz Scheduler Demo
+# Spring Boot - Quartz-Email Scheduling
 
-1. POST (http://localhost:8080/api/fruit ) servisi ile sisteme meyveler kaydedilir.
-2.
+1
 ```
 POST(http://localhost:8080/api/schedule-info/schedule)
 {
-"jobName":"job2",
-"jobGroup":"group2",
-"startTime":"2022-06-10 08-00-00",
-"counter":1,
-"gapDuration": 1
+"email":"asefacihangir@gmail.com",
+"subject":"Özlü Sözler",
+"body":"Bir iş yaparken, bir hedefe yürürken mükemmel olmaya değil; istikrar ve kararlılıkla adım atmaya ihtiyacın var. (Pınar Kaçar Özkent)",
+"dateTime":"2022-06-12T10:27:00",
+"timeZone":"Europe/Istanbul"
 }
 ```
-Servisi ile job sisteme kaydedilir ve bu bilgiler kullanılarak yeni bir job oluşturulur.Oluşturduğumız job; serviste verdiğimiz **startTime** zamanında çalışacaktır.
+Servisi ile job sisteme kaydedilir ve bu bilgiler kullanılarak yeni bir job oluşturulur.Oluşturduğumız job; serviste verdiğimiz **dateTime** zamanında çalışacaktır.
 
 

@@ -1,7 +1,5 @@
 package com.phoenix.quartzscheduler.scheduler;
 
-import com.phoenix.quartzscheduler.domain.ScheduleInfo;
-import com.phoenix.quartzscheduler.repository.ScheduleInfoRepository;
 import org.quartz.JobDetail;
 import org.quartz.JobKey;
 import org.quartz.SchedulerException;
@@ -12,12 +10,6 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class MySchedulerListener implements SchedulerListener {
-
-  private final ScheduleInfoRepository scheduleInfoRepository;
-
-  public MySchedulerListener(ScheduleInfoRepository scheduleInfoRepository) {
-    this.scheduleInfoRepository = scheduleInfoRepository;
-  }
 
   @Override
   public void jobScheduled(Trigger trigger) {
@@ -32,13 +24,6 @@ public class MySchedulerListener implements SchedulerListener {
   @Override
   public void triggerFinalized(Trigger trigger) {
     System.out.println("cleanup after job execution.....");
-    JobKey jobKey = trigger.getJobKey();
-
-    String jobName = jobKey.getName();
-    ScheduleInfo persistedScheduledInfo = scheduleInfoRepository.findByJobName(jobName);
-    if (persistedScheduledInfo != null) {
-      scheduleInfoRepository.delete(persistedScheduledInfo);
-    }
 
   }
 
